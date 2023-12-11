@@ -35,7 +35,7 @@ cardapio.metodos = {
             let temp = cardapio.templates.item.replace(/\${img}/g, e.img)
             .replace(/\${name}/g, e.name)
             .replace(/\${price}/g, e.price.toFixed(2).replace('.', ','))
-            .replace(/\${name}/g, e.id)
+            .replace(/\${id}/g, e.id)
 
 
             // botão ver mais ativo (12 itens)
@@ -71,7 +71,7 @@ cardapio.metodos = {
 
     },
 
-    //diminuir quantidade de itens *nao ta funcionando
+    //diminuir quantidade de itens
     diminuirQuantidade: (id) => {
 
         let qntdAtual = parseInt($("#qntd-" + id).text());
@@ -82,7 +82,7 @@ cardapio.metodos = {
 
     },
 
-    //aumentar quantidade de itens nao ta funcionando
+    //aumentar quantidade de itens 
     aumentarQuantidade: (id) => {
 
         let qntdAtual = parseInt($("#qntd-" + id).text());
