@@ -126,14 +126,45 @@ cardapio.metodos = {
                     MEU_CARRINHO.push(item[0])
                 }
 
-                alert(' item adicionado ao carrinho')
+                cardapio.metodos.mensagem()
                 $("#qntd-" + id).text(0);
+
+                cardapio.metodos.atualizarBadgeTotal();
 
 
             }
 
         }
     
+    },
+
+    //atualiza o badge de totais dos botoes "meu carrinho"
+    atualizarBadgeTotal: () => {
+
+        var total = 0;
+
+        $.each(MEU_CARRINHO, (i,e) => {
+            total += e.qntd
+        })
+
+        if (total > 0) {
+            $(".botao-carrinho").removeClass('hidden');
+            $(".container-total-carrinho").removeClass('hidden');
+        }
+        else {
+            $(".botao-carrinho").addClass('hidden');
+            $(".container-total-carrinho").addClass('hidden');
+        }
+
+        $("badge-total-carrinho").html(total);
+
+    },
+
+    mensagem: (text, cor = 'red', tempo = 3500) =>  {
+
+        alert(' item adicionado ao carrinho')
+
+
     }
 
 
