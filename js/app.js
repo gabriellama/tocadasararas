@@ -102,9 +102,8 @@ cardapio.metodos = {
             // obtem a lista de itens 
             let filtro = MENU[categoria]; 
 
-
             //obter o item
-            let item = $.grep(filtro, (e,i) => {return e.id == id });
+            let item = $.grep(filtro, (e, i) => {return e.id == id });
 
             if(item.length > 0 ) {
 
@@ -117,7 +116,6 @@ cardapio.metodos = {
                     let objIndex = MEU_CARRINHO.findIndex((obj => obj.id == id));
                     MEU_CARRINHO[objIndex].qntd = MEU_CARRINHO[objIndex].qntd + qntdAtual;
 
-
                 }
 
                 // caso ainda não exista o item, adiciona ele 
@@ -126,7 +124,7 @@ cardapio.metodos = {
                     MEU_CARRINHO.push(item[0])
                 }
 
-                cardapio.metodos.mensagem()
+                cardapio.metodos.mensagem('Item adicionado ao carrinho')
                 $("#qntd-" + id).text(0);
 
                 cardapio.metodos.atualizarBadgeTotal();
@@ -156,15 +154,15 @@ cardapio.metodos = {
             $(".container-total-carrinho").addClass('hidden');
         }
 
-        $("badge-total-carrinho").html(total);
+        $(".badge-total-carrinho").html(total);
 
     },
 
     mensagem: (text, cor = 'red', tempo = 3500) =>  {
 
-        alert(' item adicionado ao carrinho')
+        let msg = `<div class="toast ${cor}">${texto}</div>`;
 
-
+        $("#container-mensagens").append(msg);
     }
 
 
