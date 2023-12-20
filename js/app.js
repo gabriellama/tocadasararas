@@ -124,7 +124,7 @@ cardapio.metodos = {
                     MEU_CARRINHO.push(item[0])
                 }
 
-                cardapio.metodos.mensagem('Item adicionado ao carrinho')
+                cardapio.metodos.mensagem('Item adicionado ao carrinho', 'green')
                 $("#qntd-" + id).text(0);
 
                 cardapio.metodos.atualizarBadgeTotal();
@@ -141,7 +141,7 @@ cardapio.metodos = {
 
         var total = 0;
 
-        $.each(MEU_CARRINHO, (i,e) => {
+        $.each(MEU_CARRINHO, (i, e) => {
             total += e.qntd
         })
 
@@ -158,11 +158,112 @@ cardapio.metodos = {
 
     },
 
-    mensagem: (text, cor = 'red', tempo = 3500) =>  {
+    //abrir o layout do carrinho
+    abrirCarrinho: (abrir) => {
 
-        let msg = `<div class="toast ${cor}">${texto}</div>`;
+        if (abrir) {
+            $("#modalCarrinho").removeClass('hidden');
+            cardapio.metodos.carregarCarrinho();
+        }
+
+        else {
+            $("#modalCarrinho").addClass('hidden');
+        }
+
+    },
+
+    //altera exibição das etapas carrinho
+    carregarEtapa: (etapa) => {
+
+        if (etapa == 1) {
+            $("#lblTituloEtapa").text('Seu carrinho: ');
+            $("#itensCarrinho").removeClass('hidden');
+            $("#localEntrega").addClass('hidden');
+            $("#resumeCarrinho").addClass('hidden');
+
+            $(".etapa").removeClass('active');
+            $(".etapa1").addClass('active');
+
+            $("#btnEtapaPedido").removeClass('hidden');
+            $("#btnEtapaEndereco").addClass('hidden');
+            $("#btnEtapaResumo").addClass('hidden');
+            $("#btnEtapaVoltar").addClass('hidden');
+
+        }
+
+        if (etapa == 2) {
+            $("#lblTituloEtapa").text('Endereço de entrega: ');
+            $("#itensCarrinho").addClass('hidden');
+            $("#localEntrega").removeClass('hidden');
+            $("#resumeCarrinho").addClass('hidden');
+
+            $(".etapa").removeClass('active');
+            $(".etapa1").addClass('active');
+            $(".etapa2").addClass('active');
+
+            $("#btnEtapaPedido").addClass('hidden');
+            $("#btnEtapaEndereco").removeClass('hidden');
+            $("#btnEtapaResumo").addClass('hidden');
+            $("#btnEtapaVoltar").removeClass('hidden');
+
+        }
+
+        if (etapa == 3) {
+            $("#lblTituloEtapa").text('Resumo do pedido: ');
+            $("#itensCarrinho").addClass('hidden');
+            $("#localEntrega").addClass('hidden');
+            $("#resumeCarrinho").removeClass('hidden');
+
+            $(".etapa").removeClass('active');
+            $(".etapa1").addClass('active');
+            $(".etapa2").addClass('active');
+            $(".etapa3").addClass('active');
+
+            $("#btnEtapaPedido").addClass('hidden');
+            $("#btnEtapaEndereco").addClass('hidden');
+            $("#btnEtapaResumo").removeClass('hidden');
+            $("#btnEtapaVoltar").removeClass('hidden');
+
+        }
+
+
+    },
+
+
+    //btn voltar etapa
+    voltarEtapa: () => {
+
+        let etapa = $(".etapa.active").length;
+        cardapio.metodos.carregarEtapa(etapa - 1)
+
+    },
+
+    //carrega lista de itens dentro do carrinho
+    carregarCarrinho: () => {
+
+        cardapio.metodos.carregarEtapa1(1);
+
+
+    },
+
+
+    //alerta de mensagem 
+    mensagem: (texto, cor = 'red', tempo = 2000) =>  {
+
+        let id = Math.floor(Date.now() * Math.random()).toString();
+
+        let msg = `<div id="msg-${id}" class="animated fadeInDown toast ${cor}">${texto}</div>`;
 
         $("#container-mensagens").append(msg);
+
+        setTimeout(() => {
+            $("#msg-" + id).removeClass('fadeInDown');
+            $("#msg-" + id).addClass('fadeOutUp');
+            setTimeout (() => {
+                $("#msg-" + id).remove();
+            }, 800);
+        }, tempo)
+
     }
 
 
