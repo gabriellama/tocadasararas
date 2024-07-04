@@ -154,6 +154,7 @@ a.navbar-brand {
     top: -80px;
 }
 
+
 .img-banner img{
     position: absolute;
     width: 570px;
@@ -230,7 +231,7 @@ a.navbar-brand {
     left: 0;
     right: 0;
     height: 500px;
-    background-image: url(../assets/bg-icons-2.png);
+    background-image: url(../img/bg-icons-2.png);
 }
 
 .cardapio {
@@ -243,7 +244,7 @@ a.navbar-brand {
     left: 0;
     right: 0;
     height: 500px;
-    background-image: url(../assets/bg-icons-1.png);
+    background-image: url(../img/bg-icons-1.png);
 }
 
 .container-menu {
@@ -364,7 +365,7 @@ a.navbar-brand {
     left: 0;
     right: 0;
     height: 500px;
-    background-image: url(../assets/bg-icons-1.png);
+    background-image: url(../img/bg-icons-1.png);
 }
 
 .imagem-depoimento {
@@ -378,17 +379,17 @@ a.navbar-brand {
 }
 
 #depoimento-1 .imagem-depoimento {
-    background-image: url(../assets/diego.jpg);
+    background-image: url(../img/diego.jpg);
     background-size: cover;
 }
 
 #depoimento-2 .imagem-depoimento {
-    background-image: url(../assets/ana.jpg);
+    background-image: url(../img/ana.jpg);
     background-size: cover;
 }
 
 #depoimento-3 .imagem-depoimento {
-    background-image: url(../assets/joao.jpg);
+    background-image: url(../img/joao.jpg);
     background-size: cover;
 }
 
@@ -429,7 +430,7 @@ a.navbar-brand {
     align-items: end;
 }
 
-.reserva {
+.encomenda {
     padding-top: 100px;
     padding-bottom: 150px;
 }
@@ -450,7 +451,7 @@ a.navbar-brand {
     top: -21px;
 }
 
-.reserva .img-banner img {
+.encomenda .img-banner img {
     width: 100%;
 }
 
